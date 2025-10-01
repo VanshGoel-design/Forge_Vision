@@ -10,7 +10,7 @@ declare global {
     interface IntrinsicElements {
       'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         url: string;
-        events-target: string;
+        'events-target': string;
       };
     }
   }

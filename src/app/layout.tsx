@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import './spline-override.css';
 import { Toaster } from '@/components/ui/toaster';
 import SmoothScroller from '@/components/smooth-scroller';
 
