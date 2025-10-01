@@ -17,6 +17,22 @@ export default function Hero() {
       // This scene has zoom and pan disabled in the export settings
       app.load('https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode');
     }
+
+    // Fallback to remove logo with JavaScript
+    const interval = setInterval(() => {
+      const viewer = document.querySelector('spline-viewer');
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.querySelector('#logo');
+        if (logo) {
+          (logo as HTMLElement).style.display = 'none';
+          clearInterval(interval);
+        }
+      }
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
