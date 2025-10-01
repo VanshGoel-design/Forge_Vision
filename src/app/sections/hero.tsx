@@ -92,7 +92,8 @@ export default function Hero() {
           left: 0,
           right: 0,
           height: '63px',
-          backgroundColor: 'hsl(var(--background))',
+          backgroundColor: 'hsla(var(--background) / 0.8)',
+          backdropFilter: 'blur(12px)',
           zIndex: 10
         }}></div>
     </section>
