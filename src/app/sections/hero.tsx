@@ -1,28 +1,73 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { Application } from '@splinetool/runtime';
+
+// Define the type for the Spline Viewer element to satisfy TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'spline-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        url: string;
+        events-target: string;
+      };
+    }
+  }
+}
 
 export default function Hero() {
+  const splineViewerRef = useRef<HTMLElement>(null);
+  
   const handleScrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
   
   useEffect(() => {
-    const canvas = document.getElementById('canvas3d');
-    if (canvas) {
-      const app = new Application(canvas as HTMLCanvasElement);
-      // This scene has zoom and pan disabled in the export settings
-      app.load('https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode');
+    const splineViewer = splineViewerRef.current;
+
+    const handleLoad = () => {
+      if (splineViewer && (splineViewer as any).shadowRoot) {
+        const shadowRoot = (splineViewer as any).shadowRoot;
+        const logo = shadowRoot.querySelector('#logo');
+        if (logo) {
+          logo.remove();
+        }
+      }
+    };
+    
+    if (splineViewer) {
+      splineViewer.addEventListener('load', handleLoad);
     }
+    
+    // As a fallback and for quicker execution, we also run this in an interval
+    const interval = setInterval(() => {
+      if (splineViewer && (splineViewer as any).shadowRoot) {
+        const shadowRoot = (splineViewer as any).shadowRoot;
+        const logo = shadowRoot.querySelector('#logo');
+        if (logo) {
+          logo.remove();
+          clearInterval(interval);
+        }
+      }
+    }, 100);
+
+    return () => {
+      if (splineViewer) {
+        splineViewer.removeEventListener('load', handleLoad);
+      }
+      clearInterval(interval);
+    };
   }, []);
 
   return (
-    <section id="hero" className="relative w-full h-screen min-h-[700px]">
+    <section id="hero" className="relative w-full h-screen min-h-[700px] bg-background">
       <div className="absolute inset-0 z-0">
-        <canvas id="canvas3d" className="w-full h-full"></canvas>
+        <spline-viewer
+          ref={splineViewerRef}
+          url="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
+          events-target="global"
+        />
       </div>
       <div className="relative z-10 container mx-auto h-full flex items-center pointer-events-none">
         <div className="flex flex-col justify-center items-start h-full p-8 md:p-0">

@@ -23,6 +23,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
           rel="stylesheet"
         />
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         <SmoothScroller>{children}</SmoothScroller>

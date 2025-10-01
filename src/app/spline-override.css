@@ -1,9 +1,0 @@
-/* This file is used to override default Spline styles. */
-
-/* Hide the Spline logo */
-a[href*="spline.design"],
-#logo {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
