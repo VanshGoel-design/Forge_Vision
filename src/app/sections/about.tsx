@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -10,8 +11,6 @@ import { JsIcon } from '@/components/icons/js-icon';
 import { ReactIcon } from '@/components/icons/react-icon';
 import { GsapIcon } from '@/components/icons/gsap-icon';
 import { SplineIcon } from '@/components/icons/spline-icon';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
   { name: 'HTML5', icon: HtmlIcon },
@@ -34,6 +33,7 @@ export default function About() {
   const skillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: sectionRef.current,

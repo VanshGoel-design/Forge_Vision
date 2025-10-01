@@ -1,3 +1,4 @@
+
 "use client";
 import {
   Carousel,
@@ -14,8 +15,6 @@ import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -49,6 +48,7 @@ export default function Projects() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
     if (!isDesktop || !sectionRef.current || !scrollContainerRef.current) return;
 

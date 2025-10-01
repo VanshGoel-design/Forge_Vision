@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -6,12 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Code, Github, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.fromTo(
         footerRef.current,
