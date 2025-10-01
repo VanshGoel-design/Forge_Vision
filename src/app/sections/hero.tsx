@@ -11,7 +11,7 @@ export default function Hero() {
   };
   
   return (
-    <section id="hero" className="relative w-full h-screen min-h-[700px] overflow-hidden">
+    <section id="hero" className="w-full h-screen min-h-[700px]">
       <div className="container mx-auto h-full grid md:grid-cols-2 items-center">
         <div className="flex flex-col justify-center items-start h-full p-8 md:p-0">
           <div className="max-w-lg">
