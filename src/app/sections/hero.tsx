@@ -1,21 +1,18 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React from 'react';
+import Spline from '@splinetool/react-spline';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 export default function Hero() {
   return (
     <section id="hero" className="relative w-full h-screen min-h-[700px] overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="w-full h-full bg-background" />}>
-          <Spline
-            scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
-            className="!w-full !h-full"
-          />
-        </Suspense>
+        <Spline
+          scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
+          className="!w-full !h-full"
+        />
       </div>
       <div className="relative z-10 flex flex-col justify-center items-start h-full p-8 md:p-16">
         <div className="max-w-lg">
