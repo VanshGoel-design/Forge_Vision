@@ -86,16 +86,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-       <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '63px',
-          backgroundColor: 'hsla(var(--background) / 0.8)',
-          backdropFilter: 'blur(12px)',
-          zIndex: 10
-        }}></div>
+       <div className="absolute bottom-0 left-0 right-0 h-[63px] bg-secondary z-10"></div>
     </section>
   );
 }
