@@ -91,7 +91,7 @@ export default function Hero() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: '54px',
+          height: '63px',
           backgroundColor: 'hsl(var(--background))',
           zIndex: 10
         }}></div>
