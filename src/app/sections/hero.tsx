@@ -18,13 +18,13 @@ export default function Hero() {
           className="!w-full !h-full"
         />
       </div>
-      <div className="relative z-10 flex flex-col justify-center items-start h-full p-8 md:p-16 pointer-events-none">
+      <div className="relative z-10 flex flex-col justify-center items-start h-full p-8 md:p-16 pointer-events-none text-white">
         <div className="max-w-lg">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
             Crafting Digital{' '}
             <span className="text-primary">Experiences</span>
           </h1>
-          <p className="text-lg md:text-xl text-foreground/80 mb-8">
+          <p className="text-lg md:text-xl text-white/80 mb-8">
             I build immersive and beautiful web applications using modern technologies.
           </p>
           <Button size="lg" className="group pointer-events-auto" onClick={handleScrollToProjects}>
