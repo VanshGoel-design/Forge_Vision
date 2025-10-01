@@ -9,14 +9,14 @@ const Spline = lazy(() => import('@splinetool/react-spline'));
 function SplineScene() {
   return (
     <Spline
-      scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
+      scene="https://prod.spline.design/41208gZ5M-oB23tL/scene.splinecode"
       className="!w-full !h-full"
     />
   );
 }
 
 export default function Hero() {
-    const handleScrollToProjects = () => {
+  const handleScrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
   

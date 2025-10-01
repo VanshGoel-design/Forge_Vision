@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
 export default function Contact() {
-    const handleContactClick = () => {
+  const handleContactClick = () => {
     window.location.href = "tel:+919686545890";
   };
   
