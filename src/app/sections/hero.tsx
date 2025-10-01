@@ -1,48 +1,37 @@
 "use client";
 
-import React, { Suspense, useRef, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isSplineLoaded, setIsSplineLoaded] = useState(false);
-
-  useEffect(() => {
-    // GSAP animations can be re-added here if needed
-  }, [isSplineLoaded]);
-
   return (
     <section id="hero" className="relative w-full h-screen min-h-[700px] overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="w-full h-full bg-background" />}>
-          <Spline
-            scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
-            onLoad={() => setIsSplineLoaded(true)}
-            className="!w-full !h-full"
-          />
-        </Suspense>
-      </div>
-      <div
-        ref={containerRef}
-        className="relative z-10 container mx-auto h-full flex flex-col justify-center items-center text-center px-4"
-      >
-        <div className="bg-card/50 backdrop-blur-md p-8 sm:p-12 rounded-lg shadow-lg max-w-lg">
-           <h1 className="text-4xl md:text-5xl font-bold">
-            Digital Experiences
-          </h1>
-          <p className="text-lg md:text-xl max-w-xl mt-6 font-light text-foreground/80">
-            Crafting unique and immersive web applications.
-          </p>
-          <div className="mt-8">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-shadow duration-300 transform hover:scale-105"
-            >
-              Get In Touch
+      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+        <div className="flex flex-col justify-center items-start p-8 md:p-16 text-left relative z-10">
+          <div className="max-w-lg">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+              Crafting Digital
+              <br />
+              <span className="text-primary">Experiences</span>
+            </h1>
+            <p className="text-lg md:text-xl text-foreground/80 mb-8">
+              I build immersive and beautiful web applications using modern technologies.
+            </p>
+            <Button size="lg" className="group">
+              View My Work <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
+        </div>
+        <div className="relative h-full w-full">
+           <Suspense fallback={<div className="w-full h-full bg-background" />}>
+            <Spline
+              scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
+              className="!w-full !h-full"
+            />
+          </Suspense>
         </div>
       </div>
     </section>
