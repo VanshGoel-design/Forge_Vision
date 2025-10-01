@@ -92,7 +92,10 @@ export default function Hero() {
           left: 0,
           right: 0,
           height: '63px',
-          backgroundColor: 'hsl(var(--background))',
+          backgroundImage: 'url(/gradient-background.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           zIndex: 10
         }}></div>
     </section>
