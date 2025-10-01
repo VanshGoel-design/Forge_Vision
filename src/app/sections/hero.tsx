@@ -16,7 +16,7 @@ export default function Hero() {
         <div className="flex flex-col justify-center items-start h-full p-8 md:p-0">
           <div className="max-w-lg">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-              <span className="text-foreground/20">Crafting Digital</span>{' '}
+              <span className="text-foreground/80">Crafting Digital</span>{' '}
               <span className="text-primary">Experiences</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
@@ -29,7 +29,7 @@ export default function Hero() {
         </div>
         <div className="relative w-full h-full hidden md:flex items-center justify-center">
             <Spline
-              scene="https://prod.spline.design/41208gZ5M-oB23tL/scene.splinecode"
+              scene="https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode"
             />
         </div>
       </div>
