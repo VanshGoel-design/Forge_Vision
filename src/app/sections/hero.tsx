@@ -13,9 +13,7 @@ export default function Hero() {
   useEffect(() => {
     const canvas = document.getElementById('canvas3d');
     if (canvas) {
-      const app = new Application(canvas as HTMLCanvasElement, {
-        hideLogo: true, // This will hide the Spline logo
-      });
+      const app = new Application(canvas as HTMLCanvasElement);
       // This scene has zoom and pan disabled in the export settings
       app.load('https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode');
     }
