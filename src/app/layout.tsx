@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import SmoothScroller from '@/components/smooth-scroller';
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
+  title: 'Forge Vision',
   description: 'A portfolio of my work.',
 };
 

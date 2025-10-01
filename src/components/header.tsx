@@ -44,7 +44,7 @@ export default function Header() {
             <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
             <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
           </svg>
-          <span className="text-xl font-semibold tracking-tight">Portfolio</span>
+          <span className="text-xl font-semibold tracking-tight">Forge Vision</span>
         </Link>
         <nav className="hidden md:flex gap-8">
           {navLinks.map((link) => (
@@ -76,7 +76,7 @@ export default function Header() {
                       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
                       <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
-                    <span className="text-xl font-semibold tracking-tight">Portfolio</span>
+                    <span className="text-xl font-semibold tracking-tight">Forge Vision</span>
                 </Link>
                 <SheetClose asChild>
                     <Button variant="ghost" size="icon">
