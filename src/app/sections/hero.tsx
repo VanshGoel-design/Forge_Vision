@@ -19,9 +19,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="w-full h-screen min-h-[700px]">
-      <div className="container mx-auto h-full grid md:grid-cols-2 items-center">
-        <div className="flex flex-col justify-center items-start h-full p-8 md:p-0 pointer-events-none">
+    <section id="hero" className="relative w-full h-screen min-h-[700px]">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <canvas id="canvas3d" className="w-full h-full"></canvas>
+      </div>
+      <div className="relative z-10 container mx-auto h-full flex items-center">
+        <div className="flex flex-col justify-center items-start h-full p-8 md:p-0">
           <div className="max-w-lg">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
               <span className="text-foreground/80">Crafting Digital</span>{' '}
@@ -34,9 +37,6 @@ export default function Hero() {
               View My Work <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
-        </div>
-        <div className="relative w-full h-full hidden md:flex items-center justify-center">
-            <canvas id="canvas3d" className="w-full h-full"></canvas>
         </div>
       </div>
     </section>
