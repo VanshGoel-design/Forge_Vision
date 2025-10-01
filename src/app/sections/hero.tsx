@@ -14,21 +14,22 @@ export default function Hero() {
     const canvas = document.getElementById('canvas3d');
     if (canvas) {
       const app = new Application(canvas as HTMLCanvasElement);
+      // This scene has zoom and pan disabled in the export settings
       app.load('https://prod.spline.design/CTbcW2wvd-u4soLg/scene.splinecode');
     }
   }, []);
 
   return (
     <section id="hero" className="relative w-full h-screen min-h-[700px]">
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0">
         <canvas id="canvas3d" className="w-full h-full"></canvas>
       </div>
-      <div className="relative z-10 container mx-auto h-full flex items-center">
+      <div className="relative z-10 container mx-auto h-full flex items-center pointer-events-none">
         <div className="flex flex-col justify-center items-start h-full p-8 md:p-0">
           <div className="max-w-lg">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-              <span className="text-foreground/80">Crafting Digital</span>{' '}
-              <span className="text-primary">Experiences</span>
+              <span className="text-primary">Crafting Digital</span>{' '}
+              <span className="text-foreground/80">Experiences</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
               I build immersive and beautiful web applications using modern technologies.
