@@ -27,6 +27,7 @@ export default function Hero() {
     const splineViewer = splineViewerRef.current;
 
     const handleLoad = () => {
+      // This function runs when the Spline scene is loaded
       if (splineViewer && (splineViewer as any).shadowRoot) {
         const shadowRoot = (splineViewer as any).shadowRoot;
         const logo = shadowRoot.querySelector('#logo');
@@ -36,11 +37,7 @@ export default function Hero() {
       }
     };
     
-    if (splineViewer) {
-      splineViewer.addEventListener('load', handleLoad);
-    }
-    
-    // As a fallback and for quicker execution, we also run this in an interval
+    // Fallback interval to ensure the logo is removed
     const interval = setInterval(() => {
       if (splineViewer && (splineViewer as any).shadowRoot) {
         const shadowRoot = (splineViewer as any).shadowRoot;
@@ -51,6 +48,10 @@ export default function Hero() {
         }
       }
     }, 100);
+
+    if (splineViewer) {
+      splineViewer.addEventListener('load', handleLoad);
+    }
 
     return () => {
       if (splineViewer) {
