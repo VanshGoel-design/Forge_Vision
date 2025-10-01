@@ -27,16 +27,6 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background text-foreground">
         <SmoothScroller>{children}</SmoothScroller>
         <Toaster />
-        <div style={{
-          position: 'fixed',
-          bottom: '0',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '872px',
-          height: '54px',
-          backgroundColor: 'hsl(var(--background))',
-          zIndex: 100
-        }}></div>
       </body>
     </html>
   );

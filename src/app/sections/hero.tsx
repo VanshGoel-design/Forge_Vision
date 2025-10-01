@@ -86,6 +86,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
+       <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '54px',
+          backgroundColor: 'hsl(var(--background))',
+          zIndex: 10
+        }}></div>
     </section>
   );
 }
