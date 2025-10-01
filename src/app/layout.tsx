@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import SmoothScroller from '@/components/smooth-scroller';
 
 export const metadata: Metadata = {
-  title: 'NeonEdge Portfolio',
-  description: 'Sidharth, Vansh, and Yash – Web Developers building immersive 3D websites.',
+  title: 'Portfolio',
+  description: 'A portfolio of my work.',
 };
 
 export default function RootLayout({
@@ -14,12 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=Source+Code+Pro&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
           rel="stylesheet"
         />
       </head>

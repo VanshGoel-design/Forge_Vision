@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 98%;
+    --background: 240 10% 97%;
+    --foreground: 240 10% 10%;
     
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 10% 100%;
+    --card-foreground: 240 10% 10%;
     
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 10% 100%;
+    --popover-foreground: 240 10% 10%;
     
-    --primary: 182 100% 74%;
-    --primary-foreground: 182 100% 10%;
+    --primary: 240 50% 65%;
+    --primary-foreground: 240 10% 10%;
 
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 5% 90%;
+    --secondary-foreground: 240 10% 10%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 5% 45%;
     
-    --accent: 276 91% 80%;
-    --accent-foreground: 276 91% 15%;
+    --accent: 240 10% 85%;
+    --accent-foreground: 240 10% 10%;
     
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 182 100% 74%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 50% 65%;
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -38,52 +38,52 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95.9%;
-    --sidebar-primary: 182 100% 74%;
-    --sidebar-primary-foreground: 182 100% 10%;
-    --sidebar-accent: 0 0% 20%;
-    --sidebar-accent-foreground: 0 0% 95.9%;
-    --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 182 100% 74%;
+    --sidebar-background: 240 10% 97%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 240 50% 65%;
+    --sidebar-primary-foreground: 240 10% 10%;
+    --sidebar-accent: 240 5% 90%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 240 50% 65%;
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 98%;
+    --background: 240 10% 10%;
+    --foreground: 240 10% 98%;
     
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 10% 12%;
+    --card-foreground: 240 10% 98%;
     
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 10% 10%;
+    --popover-foreground: 240 10% 98%;
     
-    --primary: 182 100% 74%;
-    --primary-foreground: 182 100% 10%;
+    --primary: 240 50% 65%;
+    --primary-foreground: 240 10% 10%;
 
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 5% 20%;
+    --secondary-foreground: 240 10% 98%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 63.9%;
     
-    --accent: 276 91% 80%;
-    --accent-foreground: 276 91% 15%;
+    --accent: 240 10% 25%;
+    --accent-foreground: 240 10% 98%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 182 100% 74%;
+    --border: 240 5.9% 25%;
+    --input: 240 5.9% 25%;
+    --ring: 240 50% 65%;
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    -chart-5: 340 75% 55%;
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 95.9%;
@@ -102,40 +102,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #1a1a1a;
   }
-  html {
-    @apply dark;
-  }
-}
-
-@layer components {
-    .text-glow {
-        text-shadow: 0 0 8px hsl(var(--primary) / 0.8), 0 0 20px hsl(var(--accent) / 0.6);
-    }
-    .card-glow {
-        @apply border border-primary/20 bg-secondary/30 backdrop-blur-md;
-        box-shadow: inset 0px 0px 10px 0px hsl(var(--primary) / 0.1), 0 0 15px -5px hsl(var(--primary) / 0.2);
-    }
-    .btn-neumorphic-glow {
-        @apply text-primary shadow-sm transition-all duration-300;
-        box-shadow: 
-            -5px -5px 10px hsl(var(--background) / 0.3), 
-            5px 5px 10px hsl(0 0% 0% / 0.3),
-            inset 0 0 0px hsl(var(--primary) / 0.5);
-    }
-
-    .btn-neumorphic-glow:hover {
-        transform: translateY(-2px);
-        box-shadow: 
-            -8px -8px 16px hsl(var(--background) / 0.3), 
-            8px 8px 16px hsl(0 0% 0% / 0.3),
-            inset 0 0 4px hsl(var(--primary) / 0.5);
-    }
-    .btn-neumorphic-glow:active {
-        transform: translateY(1px);
-        box-shadow: 
-            inset -4px -4px 8px hsl(var(--background) / 0.3), 
-            inset 4px 4px 8px hsl(0 0% 0% / 0.3);
-    }
 }
