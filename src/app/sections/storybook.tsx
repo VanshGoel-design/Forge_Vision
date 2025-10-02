@@ -89,7 +89,7 @@ export default function Storybook() {
   }, []);
 
   return (
-    <section ref={component} className="relative h-screen w-full bg-[#1a1a1a]">
+    <section id="storybook" ref={component} className="relative h-screen w-full bg-[#1a1a1a]">
         <div className="absolute top-0 left-0 w-full h-full">
             {storyData.map((data, index) => (
                 <div key={index} ref={(el) => (chapters.current[index] = el)} className="w-full h-screen">

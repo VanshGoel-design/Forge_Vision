@@ -4,7 +4,11 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
   { href: '#projects', label: 'Projects' },
@@ -13,6 +17,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -21,7 +26,7 @@ export default function Header() {
   };
   
     useEffect(() => {
-    const header = document.querySelector('header');
+    const header = headerRef.current;
     if (!header) return;
 
     const scrollHandler = () => {
@@ -33,11 +38,33 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', scrollHandler);
-    return () => window.removeEventListener('scroll', scrollHandler);
+
+    // GSAP animation to hide header on storybook scroll
+    const storybookSection = document.querySelector('#storybook');
+    if (storybookSection) {
+      gsap.to(header, {
+        scrollTrigger: {
+          trigger: storybookSection,
+          start: 'top top',
+          end: 'bottom bottom',
+          toggleActions: 'play reverse play reverse',
+          // markers: true, // for debugging
+        },
+        y: '-100%',
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.inOut',
+      });
+    }
+
+    return () => {
+        window.removeEventListener('scroll', scrollHandler);
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 transition-all duration-300">
+    <header ref={headerRef} className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 transition-all duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 group">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
