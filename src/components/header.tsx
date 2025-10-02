@@ -29,6 +29,7 @@ export default function Header() {
     const header = headerRef.current;
     if (!header) return;
 
+    // Scroll handler for background transition
     const scrollHandler = () => {
       if (window.scrollY > 50) {
         header.classList.add('bg-background/80', 'backdrop-blur-xl', 'shadow-md');
@@ -36,24 +37,19 @@ export default function Header() {
         header.classList.remove('bg-background/80', 'backdrop-blur-xl', 'shadow-md');
       }
     };
-
     window.addEventListener('scroll', scrollHandler);
 
     // GSAP animation to hide header on storybook scroll
     const storybookSection = document.querySelector('#storybook');
     if (storybookSection) {
-      gsap.to(header, {
-        scrollTrigger: {
-          trigger: storybookSection,
-          start: 'top top',
-          end: 'bottom bottom',
-          toggleActions: 'play reverse play reverse',
-          // markers: true, // for debugging
-        },
-        y: '-100%',
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.inOut',
+      ScrollTrigger.create({
+        trigger: storybookSection,
+        start: 'top top',
+        end: 'bottom bottom',
+        onEnter: () => gsap.to(header, { y: '-100%', opacity: 0, duration: 0.5, ease: 'power2.inOut' }),
+        onLeaveBack: () => gsap.to(header, { y: '0%', opacity: 1, duration: 0.5, ease: 'power2.inOut' }),
+        onEnterBack: () => gsap.to(header, { y: '-100%', opacity: 0, duration: 0.5, ease: 'power2.inOut' }),
+        onLeave: () => gsap.to(header, { y: '0%', opacity: 1, duration: 0.5, ease: 'power2.inOut' }),
       });
     }
 
