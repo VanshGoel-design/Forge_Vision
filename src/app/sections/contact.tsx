@@ -35,30 +35,27 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
-    try {
-      if (!firestore) {
-        throw new Error("Firestore is not initialized");
-      }
-      const submissionsCollection = collection(firestore, "nam5");
-      await addDocumentNonBlocking(submissionsCollection, {
-        ...data,
-        submittedAt: serverTimestamp(),
-      });
-
-      toast({
-        title: "// TRANSMISSION RECEIVED //",
-        description: "Message decoded successfully. We will reply shortly.",
-      });
-      form.reset();
-    } catch (error) {
-      console.error("Error sending transmission:", error);
+  const onSubmit = (data: FormData) => {
+    if (!firestore) {
       toast({
         variant: "destructive",
         title: "// UPLINK FAILED //",
-        description: "Could not send transmission. Please try again.",
+        description: "Firestore is not initialized. Please try again later.",
       });
+      return;
     }
+    
+    const submissionsCollection = collection(firestore, "nam5");
+    addDocumentNonBlocking(submissionsCollection, {
+      ...data,
+      submittedAt: serverTimestamp(),
+    });
+
+    toast({
+      title: "// TRANSMISSION RECEIVED //",
+      description: "Message decoded successfully. We will reply shortly.",
+    });
+    form.reset();
   };
 
   const handleContactClick = () => {
