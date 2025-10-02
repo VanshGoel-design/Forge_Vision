@@ -23,6 +23,7 @@ export default function Chapter({ character, title, story, image }: ChapterProps
             height={512}
             className="object-contain max-w-full max-h-full pixelated"
             data-ai-hint={image.imageHint}
+            style={{ imageRendering: 'pixelated' }}
           />
         )}
       </div>
@@ -33,11 +34,6 @@ export default function Chapter({ character, title, story, image }: ChapterProps
            <Typewriter text={story} className="text-base md:text-lg leading-relaxed" />
         </div>
       </div>
-       <style jsx global>{`
-        .pixelated {
-          image-rendering: pixelated;
-        }
-      `}</style>
     </div>
   );
 }
