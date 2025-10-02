@@ -2,6 +2,7 @@
 
 import Header from '@/components/header';
 import Hero from '@/app/sections/hero';
+import Storybook from '@/app/sections/storybook';
 import Projects from '@/app/sections/projects';
 import Contact from '@/app/sections/contact';
 import Footer from '@/components/footer';
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Storybook />
         <Projects />
         <Contact />
       </main>
