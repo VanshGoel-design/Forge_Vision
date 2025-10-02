@@ -103,7 +103,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  .header-hidden header {
-    @apply -translate-y-full;
+  body.header-hidden header {
+    @apply -translate-y-full opacity-0 pointer-events-none;
   }
 }
