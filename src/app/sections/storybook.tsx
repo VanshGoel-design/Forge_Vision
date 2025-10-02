@@ -84,7 +84,6 @@ export default function Storybook() {
     
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 

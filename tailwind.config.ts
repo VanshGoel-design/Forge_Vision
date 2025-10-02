@@ -10,10 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
+        headline: ['var(--font-inter)', 'sans-serif'],
         code: ['Source Code Pro', 'monospace'],
-        pixel: ['"Press Start 2P"', 'cursive'],
+        pixel: ['var(--font-press-start-2p)', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',
