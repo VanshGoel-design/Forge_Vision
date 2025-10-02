@@ -1,37 +1,27 @@
 /**
- * @file Firestore Security Rules for Contact Form Submissions
- *
- * Core Philosophy:
- * This ruleset allows public read access to all contact form submissions while restricting write access.
- *
- * Data Structure:
- * Contact form submissions are stored in a top-level collection named 'nam5'. Each document represents a single submission.
- *
- * Key Security Decisions:
- * - Public read access is granted to all documents in the 'nam5' collection.
- * - Write access is denied to all users. This is intentional since there's no authentication method
- *   and all the data will be public, so nobody will be able to create, update, or delete submissions.
- *
- * Denormalization for Authorization:
- * Not applicable, as no authorization checks are performed for public read-only data.
- *
- * Structural Segregation:
- * Not applicable, as there is a single public collection for contact form submissions.
+ * @file Firestore Security Rules
+ * @corePhilosophy This ruleset allows anyone to submit contact form data but restricts listing and direct data retrieval to prevent unauthorized access to submissions.
+ * @dataStructure Contact form submissions are stored in a top-level collection: `/nam5/{submissionId}`.
+ * @keySecurityDecisions Listing submissions is disallowed to prevent data scraping. Individual submission retrieval is disallowed unless authenticated.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows public read access to contact form submissions.  No writes are allowed.
+     * @description Allows anyone to create a contact form submission. Listing and getting is disallowed.
      * @path /nam5/{submissionId}
-     * @allow (get, list): Any user can read any submission.
-     * @deny (create, update, delete): No user can create, update, or delete a submission.
-     * @principle Allows any user to read, but no user can create, update, or delete.
+     * @allow (create) - Any unauthenticated user can submit the form.
+     * @deny (get) - No one can get the data.
+     * @deny (list) - No one can list the data.
+     * @principle Allows public submission, but restricts reading submissions.
      */
     match /nam5/{submissionId} {
-      allow get, list: if true;
-      allow create, update, delete: if false;
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
     }
   }
 }
