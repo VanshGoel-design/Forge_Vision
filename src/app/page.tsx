@@ -5,7 +5,6 @@ import Hero from '@/app/sections/hero';
 import Storybook from '@/app/sections/storybook';
 import GalacticArchives from '@/app/sections/galactic-archives';
 import Contact from '@/app/sections/contact';
-import Footer from '@/components/footer';
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <GalacticArchives />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }
