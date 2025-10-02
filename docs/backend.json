@@ -1,15 +1,10 @@
 {
   "entities": {
     "ContactFormSubmission": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "ContactFormSubmission",
+      "title": "Contact Form Submission",
       "type": "object",
       "description": "Represents a contact form submission from the website.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the contact form submission."
-        },
         "name": {
           "type": "string",
           "description": "The name of the person submitting the form."
@@ -23,46 +18,26 @@
           "type": "string",
           "description": "The message content from the contact form."
         },
-        "submissionDate": {
+        "submittedAt": {
           "type": "string",
           "description": "The date and time the form was submitted.",
           "format": "date-time"
         }
       },
-      "required": [
-        "id",
-        "name",
-        "email",
-        "message",
-        "submissionDate"
-      ]
+      "required": ["name", "email", "message", "submittedAt"]
     }
   },
   "auth": {
     "providers": [
-      "password",
       "anonymous"
     ]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "nam5/{submissionId}",
-        "definition": {
-          "entityName": "ContactFormSubmission",
-          "schema": {
-            "$ref": "#/backend/entities/ContactFormSubmission"
-          },
-          "description": "Stores contact form submissions.  Submissions are publicly accessible.",
-          "params": [
-            {
-              "name": "submissionId",
-              "description": "The unique identifier for each contact form submission."
-            }
-          ]
-        }
-      }
-    ],
-    "reasoning": "Given the requirement to store contact form submissions, and the absence of user-specific data or collaborative features, a simple collection at the root level is sufficient. This approach avoids unnecessary complexity. No authentication is required to submit the form, so all the data will be public. Therefore authorization independence is not applicable here, and no denormalization is needed, because there are not parent-child relationships and no concept of user-based data ownership or collaborative access. Segregation is not necessary, as there are no different access control requirements for form submissions."
+    "/nam5/{submissionId}": {
+      "schema": {
+        "$ref": "#/entities/ContactFormSubmission"
+      },
+      "description": "Stores contact form submissions from the website. Anyone can write to this collection."
+    }
   }
 }

@@ -1,13 +1,66 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { collection, serverTimestamp } from "firebase/firestore";
 import { Phone } from "lucide-react";
-import Starfield from "@/components/starfield";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Starfield from "@/components/starfield";
 import PixelButton from "@/components/pixel-button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { addDocumentNonBlocking, useFirestore } from "@/firebase";
+
+const formSchema = z.object({
+  name: z.string().min(2, "Callsign must be at least 2 characters."),
+  email: z.string().email("Invalid coordinates format."),
+  message: z.string().min(10, "Message payload must be at least 10 characters."),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
+  const { toast } = useToast();
+  const firestore = useFirestore();
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      if (!firestore) {
+        throw new Error("Firestore is not initialized");
+      }
+      const submissionsCollection = collection(firestore, "nam5");
+      await addDocumentNonBlocking(submissionsCollection, {
+        ...data,
+        submittedAt: serverTimestamp(),
+      });
+
+      toast({
+        title: "// TRANSMISSION RECEIVED //",
+        description: "Message decoded successfully. We will reply shortly.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error sending transmission:", error);
+      toast({
+        variant: "destructive",
+        title: "// UPLINK FAILED //",
+        description: "Could not send transmission. Please try again.",
+      });
+    }
+  };
+
   const handleContactClick = () => {
     window.location.href = "tel:+919686545890";
   };
@@ -22,25 +75,54 @@ export default function Contact() {
             <p className="text-sm md:text-base text-green-400/70 mt-2">{'>'} Compose your transmission below. All fields are required for successful uplink.</p>
           </div>
 
-          <form className="space-y-6">
-            <div className="space-y-2">
-              <label htmlFor="callsign" className="text-lg text-green-300">YOUR CALLSIGN (Name):</label>
-              <Input id="callsign" name="name" type="text" placeholder="> Enter your callsign..." className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="coordinates" className="text-lg text-green-300">RETURN COORDINATES (Email):</label>
-              <Input id="coordinates" name="email" type="email" placeholder="> Enter your return coordinates..." className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="payload" className="text-lg text-green-300">MESSAGE PAYLOAD (Your Message):</label>
-              <Textarea id="payload" name="message" placeholder="> Enter your message payload..." rows={6} className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
-            </div>
-            <div className="text-center">
-              <PixelButton type="submit" variant="primary" size="lg">
-                [ TRANSMIT MESSAGE ]
-              </PixelButton>
-            </div>
-          </form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-lg text-green-300">YOUR CALLSIGN (Name):</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="> Enter your callsign..." className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-lg text-green-300">RETURN COORDINATES (Email):</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="> Enter your return coordinates..." className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-lg text-green-300">MESSAGE PAYLOAD (Your Message):</FormLabel>
+                    <FormControl>
+                      <Textarea {...field} placeholder="> Enter your message payload..." rows={6} className="bg-black/70 border-green-400/50 text-white font-pixel focus:ring-green-400" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="text-center">
+                <PixelButton type="submit" variant="primary" size="lg" disabled={form.formState.isSubmitting}>
+                  {form.formState.isSubmitting ? "[ SENDING... ]" : "[ TRANSMIT MESSAGE ]"}
+                </PixelButton>
+              </div>
+            </form>
+          </Form>
         </div>
         
         <div className="mt-12 text-center">
