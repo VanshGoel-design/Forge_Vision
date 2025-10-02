@@ -13,19 +13,19 @@ const storyData = [
   {
     character: 'Vansh',
     title: 'Chapter 1: The Designer',
-    story: "Vansh's journey began with a love for stories and a pencil. He found his canvas in the digital world, weaving tales not with words, but with HTML and CSS. Every line of code was a brushstroke, every stylesheet a color palette, crafting experiences that were not just seen, but felt.",
+    story: "Vansh's journey began with a love for stories. He found his canvas in the digital world, weaving tales with HTML and CSS. Every line of code was a brushstroke, crafting experiences that were not just seen, but felt.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-1'),
   },
   {
     character: 'Yash',
     title: 'Chapter 2: The Alchemist',
-    story: "Yash was a seeker of logic in a world of chaos. He discovered JavaScript and with it, the power to breathe life into static pages. He saw code as a puzzle, a series of logical spells that could conjure motion, interaction, and delight, turning websites into living things.",
+    story: "Yash was a seeker of logic. He discovered JavaScript and with it, the power to breathe life into static pages. He saw code as a puzzle, a series of spells that could conjure motion and interaction, turning websites into living things.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-2'),
   },
   {
     character: 'Sidharth',
     title: 'Chapter 3: The Architect',
-    story: "Sidharth was a builder at heart. He wasn't content with just a facade; he needed to build the entire castle. He bridged the worlds of frontend and backend, erecting digital fortresses that were as robust in their foundations as they were beautiful in their design, delivering real-world value.",
+    story: "Sidharth was a builder at heart. He wasn't content with just a facade; he needed to build the entire castle. He bridged the frontend and backend, erecting digital fortresses that were robust and delivered real-world value.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-3'),
   },
 ];
