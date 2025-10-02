@@ -22,10 +22,19 @@ export default function Header() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: '#storybook',
-        start: 'top top+=100',
-        end: 'bottom bottom',
+        trigger: 'body',
+        start: 'top top',
+        endTrigger: '#storybook',
+        end: 'top top+=100',
         toggleClass: { targets: 'body', className: 'header-hidden' },
+        onToggle: ({ isActive }) => {
+          gsap.to(headerRef.current, {
+            yPercent: isActive ? -100 : 0,
+            opacity: isActive ? 0 : 1,
+            duration: 0.3,
+            ease: 'power2.inOut',
+          });
+        },
       });
     }, headerRef);
 
@@ -40,7 +49,7 @@ export default function Header() {
   };
   
   return (
-    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 bg-background/80 backdrop-blur-sm transition-transform duration-300 transform-gpu">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 group">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
