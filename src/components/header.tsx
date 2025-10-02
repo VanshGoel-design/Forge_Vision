@@ -22,11 +22,12 @@ export default function Header() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: 'body',
-        start: '100px top', 
-        end: 'bottom bottom',
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
         toggleClass: { targets: 'body', className: 'header-hidden' },
-        markers: false,
+        onEnter: () => document.body.classList.remove('header-hidden'),
+        onLeaveBack: () => document.body.classList.remove('header-hidden'),
       });
     }, headerRef);
 
