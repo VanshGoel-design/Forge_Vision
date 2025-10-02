@@ -31,7 +31,7 @@ export default function Chapter({ character, title, story, image }: ChapterProps
         <h2 className="text-3xl md:text-5xl text-yellow-400 mb-4">{title}</h2>
         <h3 className="text-2xl md:text-4xl text-cyan-400 mb-8">{character}</h3>
         <div className="border-2 border-cyan-400 p-4 rounded-lg bg-black/50">
-           <Typewriter text={story} className="text-base md:text-lg leading-relaxed" />
+           <Typewriter text={story} className="text-base md:text-lg leading-relaxed font-sans" />
         </div>
       </div>
     </div>

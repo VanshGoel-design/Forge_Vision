@@ -12,20 +12,20 @@ gsap.registerPlugin(ScrollTrigger);
 const storyData = [
   {
     character: 'Vansh',
-    title: 'Chapter 1: The Designer',
-    story: "Vansh's journey began with a love for stories. He found his canvas in the digital world, weaving tales with HTML and CSS. Every line of code was a brushstroke, crafting experiences that were not just seen, but felt.",
+    title: 'The Designer',
+    story: "Vansh transforms designs into clean, responsive websites using HTML, CSS, and JavaScript. He focuses on performance, thoughtful typography, and user-friendly interfaces.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-1'),
   },
   {
     character: 'Yash',
-    title: 'Chapter 2: The Alchemist',
-    story: "Yash was a seeker of logic. He discovered JavaScript and with it, the power to breathe life into static pages. He saw code as a puzzle, a series of spells that could conjure motion and interaction, turning websites into living things.",
+    title: 'The Alchemist',
+    story: "Yash builds interactive front-end experiences. He specializes in JavaScript-powered micro-interactions and animations that make interfaces feel delightful and intuitive.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-2'),
   },
   {
     character: 'Sidharth',
-    title: 'Chapter 3: The Architect',
-    story: "Sidharth was a builder at heart. He wasn't content with just a facade; he needed to build the entire castle. He bridged the frontend and backend, erecting digital fortresses that were robust and delivered real-world value.",
+    title: 'The Architect',
+    story: "Sidharth is a full-stack developer who connects front-end polish to reliable back-end systems. He focuses on stability, scalable code, and shipping real-world products.",
     image: PlaceHolderImages.find((img) => img.id === 'chapter-3'),
   },
 ];

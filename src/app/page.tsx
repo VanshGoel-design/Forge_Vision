@@ -9,9 +9,11 @@ import Contact from '@/app/sections/contact';
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
+      <div className="relative">
+        <Header />
         <Hero />
+      </div>
+      <main>
         <Storybook />
         <GalacticArchives />
         <Contact />
