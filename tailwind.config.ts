@@ -89,10 +89,15 @@ export default {
             height: '0',
           },
         },
+        'star-move': {
+          from: { transform: 'translateY(0px)' },
+          to: { transform: 'translateY(-2000px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'star-move': 'star-move 100s linear infinite',
       },
     },
   },

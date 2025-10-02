@@ -3,7 +3,7 @@
 import Header from '@/components/header';
 import Hero from '@/app/sections/hero';
 import Storybook from '@/app/sections/storybook';
-import Projects from '@/app/sections/projects';
+import GalacticArchives from '@/app/sections/galactic-archives';
 import Contact from '@/app/sections/contact';
 import Footer from '@/components/footer';
 
@@ -14,7 +14,7 @@ export default function Home() {
       <main>
         <Hero />
         <Storybook />
-        <Projects />
+        <GalacticArchives />
         <Contact />
       </main>
       <Footer />
