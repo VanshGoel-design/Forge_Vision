@@ -1,0 +1,37 @@
+/**
+ * @file Firestore Security Rules for Contact Form Submissions
+ *
+ * Core Philosophy:
+ * This ruleset allows public read access to all contact form submissions while restricting write access.
+ *
+ * Data Structure:
+ * Contact form submissions are stored in a top-level collection named 'nam5'. Each document represents a single submission.
+ *
+ * Key Security Decisions:
+ * - Public read access is granted to all documents in the 'nam5' collection.
+ * - Write access is denied to all users. This is intentional since there's no authentication method
+ *   and all the data will be public, so nobody will be able to create, update, or delete submissions.
+ *
+ * Denormalization for Authorization:
+ * Not applicable, as no authorization checks are performed for public read-only data.
+ *
+ * Structural Segregation:
+ * Not applicable, as there is a single public collection for contact form submissions.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows public read access to contact form submissions.  No writes are allowed.
+     * @path /nam5/{submissionId}
+     * @allow (get, list): Any user can read any submission.
+     * @deny (create, update, delete): No user can create, update, or delete a submission.
+     * @principle Allows any user to read, but no user can create, update, or delete.
+     */
+    match /nam5/{submissionId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+  }
+}
